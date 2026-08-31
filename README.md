@@ -20,4 +20,4 @@ Build the production site with `npm run build`.
 
 ## Deployment
 
-Pushing `main` builds and publishes the static site using GitHub Actions. Before launch, set the repository Actions variable `SITE_URL` to the final HTTPS domain. See [DOMAIN_SETUP.md](DOMAIN_SETUP.md) for GitHub Pages custom-domain configuration.
+Pushing `main` builds and publishes the static site using GitHub Actions. The default configuration works at the repository project URL (`/Plush-AI-Toys/`). Before a custom-domain launch, set Actions variables `SITE_URL` to the final HTTPS domain and `BASE_PATH` to `/`. See [DOMAIN_SETUP.md](DOMAIN_SETUP.md) for details.

@@ -3,7 +3,8 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: process.env.SITE_URL || 'https://your-domain.com',
+  site: process.env.SITE_URL || 'https://yehang515.github.io',
+  base: process.env.BASE_PATH || '/Plush-AI-Toys',
   output: 'static',
   integrations: [tailwind(), sitemap()],
 });
