@@ -5,7 +5,7 @@ Astro Tailwind CSS TypeScript
 内容：Markdown / MDX JSON / YAML
 
 产品图片和视频链接 随后补充
-email:kyel.zhanghang@gmail.com
+email:kyle.zhanghang@gmail.com
 whatsapp:+86 17625983675
 
 重点关注google SEO
@@ -15,7 +15,6 @@ AI plush toy OEM AI plush toy ODM AI plush toy OEM manufacturer AI plush toy ODM
 
 
 参考网站https://junoutoys.com/
-
 
 
 
