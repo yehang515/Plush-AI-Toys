@@ -2,31 +2,34 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import FloatingContact from '../components/FloatingContact.astro';
 import { getCollection } from 'astro:content';
 import capabilities from '../data/capabilities.json';
 import faqSource from '../data/faq.yaml?raw';
 import { parse } from 'yaml';
 
 const products = (await getCollection('products')).sort((a, b) => a.data.order - b.data.order);
+const featuredProduct = products[0];
 const faqs = parse(faqSource) as { question: string; answer: string }[];
 const description = 'AI plush toy manufacturer for OEM, ODM, private label and custom smart plush projects.';
 const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map(({ question, answer }) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })) };
 const organizationSchema = { '@context': 'https://schema.org', '@type': 'Organization', name: 'Plushmind', url: Astro.site, email: 'kyel.zhanghang@gmail.com', contactPoint: { '@type': 'ContactPoint', contactType: 'sales', telephone: '+8617625983675', availableLanguage: ['English'] } };
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => base === '/' ? path : `${base}${path}`;
 ---
 <BaseLayout title="AI Plush Toy Manufacturer | OEM, ODM & Private Label" description={description}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationSchema)}></script>
   <Header />
+  <FloatingContact />
   <main>
     <section class="relative overflow-hidden bg-mist pb-20 pt-36 sm:pb-28 sm:pt-44">
       <div class="absolute -right-20 top-14 h-80 w-80 rounded-full bg-coral/15 blur-3xl"></div>
       <div class="container-site relative grid items-center gap-12 lg:grid-cols-[1.05fr_.95fr]">
         <div class="max-w-2xl"><p class="eyebrow">AI plush toys · OEM · ODM</p><h1 class="font-display text-5xl font-bold leading-[.98] tracking-tight sm:text-6xl lg:text-7xl">Turn a lovable character into a <span class="text-moss">smart companion.</span></h1><p class="mt-7 max-w-xl text-base leading-7 text-ink/70 sm:text-lg">We help global brands develop custom AI plush toys—from character and interaction direction to private-label production readiness.</p><div class="mt-9 flex flex-wrap gap-3"><a class="button-primary" href="#contact">Discuss your idea <span class="ml-2">→</span></a><a class="button-secondary" href="#solutions">Explore capabilities</a></div><div class="mt-10 flex flex-wrap gap-x-7 gap-y-3 text-xs font-bold uppercase tracking-[.12em] text-ink/55"><span>Custom characters</span><span>Smart interaction</span><span>Private label</span></div></div>
         <div class="relative mx-auto w-full max-w-lg aspect-square">
-          <div class="absolute inset-5 rounded-[45%] bg-[#d9e5cc]"></div><div class="absolute inset-12 rounded-[40%] border border-moss/15"></div>
-          <div class="absolute left-[20%] top-[20%] h-[27%] w-[27%] rounded-full bg-[#c88867] shadow-lg"></div><div class="absolute right-[20%] top-[20%] h-[27%] w-[27%] rounded-full bg-[#c88867] shadow-lg"></div>
-          <div class="absolute inset-x-[17%] bottom-[9%] top-[22%] rounded-[47%] bg-[#d79b78] shadow-[inset_0_-14px_0_rgba(114,60,45,.14),0_22px_35px_rgba(24,55,47,.16)]"></div><div class="absolute left-[35%] top-[43%] h-3 w-3 rounded-full bg-ink"></div><div class="absolute right-[35%] top-[43%] h-3 w-3 rounded-full bg-ink"></div><div class="absolute left-1/2 top-[49%] h-5 w-7 -translate-x-1/2 rounded-[50%] bg-ink"></div><div class="absolute left-1/2 top-[57%] h-10 w-16 -translate-x-1/2 rounded-b-full border-b-[3px] border-ink/70"></div>
-          <div class="absolute bottom-7 right-0 max-w-[170px] rounded-2xl bg-white p-4 shadow-xl"><p class="text-[10px] font-bold uppercase tracking-[.14em] text-coral">Your character</p><p class="mt-1 text-sm font-bold">Made memorable, made interactive.</p></div>
+          <div class="absolute inset-5 rounded-[45%] bg-[#d9e5cc]"></div><img src={withBase(featuredProduct.data.image!)} alt={featuredProduct.data.title} class="relative h-full w-full rounded-[2.5rem] object-cover shadow-2xl" />
+          <a href={`${base}products/${featuredProduct.id}`} class="absolute bottom-5 right-0 max-w-[190px] rounded-2xl bg-white p-4 shadow-xl transition hover:-translate-y-1"><p class="text-[10px] font-bold uppercase tracking-[.14em] text-coral">Featured product</p><p class="mt-1 text-sm font-bold">{featuredProduct.data.title} <span class="text-coral">→</span></p></a>
         </div>
       </div>
     </section>
@@ -37,7 +40,7 @@ const organizationSchema = { '@context': 'https://schema.org', '@type': 'Organiz
 
     <section id="process" class="py-20 sm:py-28"><div class="container-site grid gap-12 lg:grid-cols-[.8fr_1.2fr]"><div><p class="eyebrow">A clear development process</p><h2 class="font-display text-4xl font-bold tracking-tight sm:text-5xl">Less guesswork. More momentum.</h2><p class="mt-5 max-w-sm leading-7 text-ink/65">A thoughtful product needs a clear handoff at every milestone. We keep the conversation focused on the details that move your project forward.</p></div><ol class="grid gap-0">{['Share your concept and target market', 'Align on product scope and custom features', 'Develop sample direction and refine details', 'Prepare for production and launch'].map((step, index) => <li class="flex gap-5 border-t border-ink/15 py-6"><span class="font-display text-2xl font-bold text-coral">0{index + 1}</span><span class="pt-1 font-display text-xl font-bold">{step}</span></li>)}</ol></div></section>
 
-    <section class="bg-white py-20 sm:py-28"><div class="container-site"><div class="flex flex-wrap items-end justify-between gap-5"><div><p class="eyebrow">Product directions</p><h2 class="font-display text-4xl font-bold tracking-tight sm:text-5xl">Designed to spark connection.</h2></div><p class="max-w-sm text-sm leading-6 text-ink/65">Product photography and videos can be added here as your range is ready to show.</p></div><div class="mt-12 grid gap-6 md:grid-cols-3">{products.map(({ data }, index) => <article class="group overflow-hidden rounded-3xl bg-mist"><div class:list={['relative flex aspect-[5/4] items-center justify-center overflow-hidden', index === 1 ? 'bg-[#f7ded2]' : index === 2 ? 'bg-[#d9e1f1]' : 'bg-[#dfead6]']}><div class="h-36 w-28 rounded-[45%] bg-white/75 shadow-lg transition duration-500 group-hover:scale-110"></div><span class="absolute bottom-4 rounded-full bg-white/80 px-3 py-1 text-[10px] font-bold uppercase tracking-wider">Image placeholder</span></div><div class="p-6"><p class="text-xs font-bold uppercase tracking-[.14em] text-coral">{data.category}</p><h3 class="mt-2 font-display text-2xl font-bold">{data.title}</h3><p class="mt-3 text-sm leading-6 text-ink/65">{data.excerpt}</p></div></article>)}</div></div></section>
+    <section class="bg-white py-20 sm:py-28"><div class="container-site"><div class="flex flex-wrap items-end justify-between gap-5"><div><p class="eyebrow">Featured product</p><h2 class="font-display text-4xl font-bold tracking-tight sm:text-5xl">Meet our AI companion plush.</h2></div><a class="button-secondary" href={`${base}products/${featuredProduct.id}`}>View product details</a></div><article class="mt-12 grid overflow-hidden rounded-3xl bg-mist md:grid-cols-2"><img src={withBase(featuredProduct.data.image!)} alt={featuredProduct.data.title} class="h-full min-h-80 w-full object-cover" /><div class="flex flex-col justify-center p-8 sm:p-12"><p class="text-xs font-bold uppercase tracking-[.14em] text-coral">{featuredProduct.data.category}</p><h3 class="mt-3 font-display text-4xl font-bold">{featuredProduct.data.title}</h3><p class="mt-4 max-w-md leading-7 text-ink/65">{featuredProduct.data.excerpt}</p><div class="mt-7 flex flex-wrap gap-3"><a class="button-primary" href={`${base}products/${featuredProduct.id}`}>Explore product →</a><a class="button-secondary" href={featuredProduct.data.video}>Watch video</a></div></div></article></div></section>
 
     <section id="faq" class="py-20 sm:py-28"><div class="container-site grid gap-12 lg:grid-cols-[.75fr_1.25fr]"><div><p class="eyebrow">FAQ</p><h2 class="font-display text-4xl font-bold tracking-tight sm:text-5xl">Questions, answered.</h2></div><div>{faqs.map((faq) => <details class="border-t border-ink/15 py-5"><summary class="cursor-pointer list-none font-display text-lg font-bold marker:hidden">{faq.question}<span class="float-right text-coral">+</span></summary><p class="mt-3 max-w-2xl text-sm leading-6 text-ink/65">{faq.answer}</p></details>)}</div></div></section>
 

@@ -1,8 +1,20 @@
 ---
-title: "Companion Bear"
-excerpt: "A soft, character-led platform for conversational play and daily routines."
-category: "AI companion"
+title: "AI Companion Plush"
+excerpt: "A huggable AI companion with LED screen eyes, voice cloning and switchable languages."
+category: "AI talking plush"
 order: 1
+image: "/images/products/p1/3.jpg"
+images:
+  - "/images/products/p1/3.jpg"
+  - "/images/products/p1/4.jpg"
+  - "/images/products/p1/5.jpg"
+  - "/images/products/p1/12.jpg"
+  - "/images/products/p1/14.jpg"
+  - "/images/products/p1/15.jpg"
+  - "/images/products/p1/19.jpg"
+  - "/images/products/p1/20.jpg"
+  - "/images/products/p1/22.jpg"
+video: "https://youtube.com/shorts/1ISk0LdHwsw?feature=share"
 ---
 
 Designed for brands developing a safe, memorable companion product.
