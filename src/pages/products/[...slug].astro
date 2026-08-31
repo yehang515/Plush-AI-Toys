@@ -15,10 +15,10 @@ const { data } = product;
 const base = import.meta.env.BASE_URL;
 const withBase = (path: string) => base === '/' ? path : `${base}${path}`;
 const videoId = data.video?.match(/(?:shorts\/|youtu\.be\/|v=)([^?&/]+)/)?.[1];
-const specs = product.id === 'p1' ? [
+const specs = product.id === 'ai-cat-tail' ? [
   ['Recommended age', 'Suitable for ages 3+'], ['Height', '26 cm'], ['Craft', 'Embroidery'], ['Fabric', 'Tie-dyed and brushed rabbit fur'], ['Filling', 'PP cotton'], ['MOQ for wholesale', '50 pcs'], ['Packaging', 'Each toy with PDQ'], ['Carton pack', '8 pcs / CTN'], ['Carton size', '45 × 45 × 53 cm'],
 ] : [];
-const features = product.id === 'p1' ? ['Built-in AI device', 'LED screen eyes', 'Voice cloning', 'Switchable languages', 'Huggable'] : ['Interactive plush', 'Custom character direction', 'OEM / ODM options', 'Private label ready'];
+const features = product.id === 'ai-cat-tail' ? ['Built-in AI device', 'LED screen eyes', 'Voice cloning', 'Switchable languages', 'Huggable'] : ['Interactive plush', 'Custom character direction', 'OEM / ODM options', 'Private label ready'];
 ---
 <BaseLayout title={`${data.title} | AI Plush Toy Wholesale`} description={data.excerpt}>
   <Header />
