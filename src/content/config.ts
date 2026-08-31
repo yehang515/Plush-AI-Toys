@@ -14,4 +14,15 @@ const products = defineCollection({
   }),
 });
 
-export const collections = { products };
+const topics = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/topics' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    eyebrow: z.string(),
+    keywords: z.array(z.string()),
+    order: z.number(),
+  }),
+});
+
+export const collections = { products, topics };

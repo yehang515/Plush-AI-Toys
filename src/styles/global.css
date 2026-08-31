@@ -14,4 +14,7 @@
   .eyebrow { @apply mb-4 text-xs font-bold uppercase tracking-[0.16em] text-coral; }
   .button-primary { @apply inline-flex items-center justify-center rounded-full bg-ink px-6 py-3.5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-moss; }
   .button-secondary { @apply inline-flex items-center justify-center rounded-full border border-ink/20 px-6 py-3.5 text-sm font-bold text-ink transition hover:border-ink hover:bg-white; }
+  .topic-copy h2 { @apply mt-10 font-display text-3xl font-bold tracking-tight; }
+  .topic-copy p { @apply mt-4 text-base leading-8 text-ink/70; }
+  .topic-copy h2 + p { @apply mt-4; }
 }
