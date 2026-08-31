@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-oat font-body text-ink antialiased; }
+  ::selection { @apply bg-coral text-white; }
+}
+
+@layer components {
+  .container-site { @apply mx-auto w-full max-w-7xl px-5 sm:px-8; }
+  .eyebrow { @apply mb-4 text-xs font-bold uppercase tracking-[0.16em] text-coral; }
+  .button-primary { @apply inline-flex items-center justify-center rounded-full bg-ink px-6 py-3.5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-moss; }
+  .button-secondary { @apply inline-flex items-center justify-center rounded-full border border-ink/20 px-6 py-3.5 text-sm font-bold text-ink transition hover:border-ink hover:bg-white; }
+}
