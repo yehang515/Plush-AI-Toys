@@ -1,8 +1,22 @@
 ---
-title: "Story Bunny"
-excerpt: "An interactive plush concept made for stories, songs and language play."
-category: "Talking plush"
+title: "AI Talking Plush"
+excerpt: "A character-led plush product direction for interactive play, storytelling and brand customization."
+category: "Interactive plush"
 order: 2
+image: "/images/products/p2/5.jpg"
+images:
+  - "/images/products/p2/5.jpg"
+  - "/images/products/p2/6.jpg"
+  - "/images/products/p2/7.jpg"
+  - "/images/products/p2/13.jpg"
+  - "/images/products/p2/14.jpg"
+  - "/images/products/p2/15.jpg"
+  - "/images/products/p2/16.jpg"
+  - "/images/products/p2/18.jpg"
+  - "/images/products/p2/19.jpg"
+  - "/images/products/p2/21.jpg"
+  - "/images/products/p2/29.jpg"
+video: "https://youtube.com/shorts/CdSMQ58nE0o?feature=share"
 ---
 
 Bring your own character, voice direction and content experience.
