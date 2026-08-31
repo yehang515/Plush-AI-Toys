@@ -3,13 +3,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FloatingContact from '../components/FloatingContact.astro';
+import FactoryCarousel from '../components/FactoryCarousel.astro';
 import { getCollection } from 'astro:content';
 import capabilities from '../data/capabilities.json';
 import faqSource from '../data/faq.yaml?raw';
 import { parse } from 'yaml';
 
 const products = (await getCollection('products')).sort((a, b) => a.data.order - b.data.order);
-const featuredProduct = products[0];
 const faqs = parse(faqSource) as { question: string; answer: string }[];
 const description = 'AI plush toy manufacturer for OEM, ODM, private label and custom smart plush projects.';
 const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map(({ question, answer }) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })) };
@@ -24,16 +24,8 @@ const withBase = (path: string) => base === '/' ? path : `${base}${path}`;
   <Header />
   <FloatingContact />
   <main>
-    <section class="relative overflow-hidden bg-mist pb-20 pt-36 sm:pb-28 sm:pt-44">
-      <div class="absolute -right-20 top-14 h-80 w-80 rounded-full bg-coral/15 blur-3xl"></div>
-      <div class="container-site relative grid items-center gap-12 lg:grid-cols-[1.05fr_.95fr]">
-        <div class="max-w-2xl"><p class="eyebrow">AI plush toys · OEM · ODM</p><h1 class="font-display text-5xl font-bold leading-[.98] tracking-tight sm:text-6xl lg:text-7xl">Turn a lovable character into a <span class="text-moss">smart companion.</span></h1><p class="mt-7 max-w-xl text-base leading-7 text-ink/70 sm:text-lg">We help global brands develop custom AI plush toys—from character and interaction direction to private-label production readiness.</p><div class="mt-9 flex flex-wrap gap-3"><a class="button-primary" href="#contact">Discuss your idea <span class="ml-2">→</span></a><a class="button-secondary" href="#solutions">Explore capabilities</a></div><div class="mt-10 flex flex-wrap gap-x-7 gap-y-3 text-xs font-bold uppercase tracking-[.12em] text-ink/55"><span>Custom characters</span><span>Smart interaction</span><span>Private label</span></div></div>
-        <div class="relative mx-auto w-full max-w-lg aspect-square">
-          <div class="absolute inset-5 rounded-[45%] bg-[#d9e5cc]"></div><img src={withBase(featuredProduct.data.image!)} alt={featuredProduct.data.title} class="relative h-full w-full rounded-[2.5rem] object-cover shadow-2xl" />
-          <a href={`${basePath}products/${featuredProduct.id}`} class="absolute bottom-5 right-0 max-w-[190px] rounded-2xl bg-white p-4 shadow-xl transition hover:-translate-y-1"><p class="text-[10px] font-bold uppercase tracking-[.14em] text-coral">Featured product</p><p class="mt-1 text-sm font-bold">{featuredProduct.data.title} <span class="text-coral">→</span></p></a>
-        </div>
-      </div>
-    </section>
+    <FactoryCarousel />
+    <section id="products" class="bg-white py-20 sm:py-28"><div class="container-site"><div><p class="eyebrow">Our products</p><h2 class="font-display text-4xl font-bold tracking-tight sm:text-5xl">Explore the complete collection.</h2></div><div class="mt-12 grid gap-6 md:grid-cols-2">{products.filter((product) => product.data.image).map((product) => <article class="group overflow-hidden rounded-3xl border border-ink/10 bg-white"><img src={withBase(product.data.image!)} alt={product.data.title} class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" /><div class="p-7"><p class="text-xs font-bold uppercase tracking-[.14em] text-coral">{product.data.category}</p><h3 class="mt-2 font-display text-2xl font-bold">{product.data.title}</h3><p class="mt-3 text-sm leading-6 text-ink/65">{product.data.excerpt}</p><div class="mt-5 flex gap-4"><a class="text-sm font-bold text-moss hover:text-coral" href={`${basePath}products/${product.id}`}>View product →</a>{product.data.video && <a class="text-sm font-bold text-ink/55 hover:text-coral" href={product.data.video}>Watch video</a>}</div></div></article>)}</div></div></section>
 
     <section id="solutions" class="py-20 sm:py-28"><div class="container-site"><div class="max-w-2xl"><p class="eyebrow">Built around your brief</p><h2 class="font-display text-4xl font-bold tracking-tight sm:text-5xl">A full path from plush concept to product.</h2></div><div class="mt-12 grid gap-px overflow-hidden rounded-3xl bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">{capabilities.map((item) => <article class="bg-oat p-7"><p class="font-display text-3xl font-bold text-coral">{item.number}</p><h3 class="mt-12 font-display text-xl font-bold">{item.title}</h3><p class="mt-3 text-sm leading-6 text-ink/65">{item.text}</p></article>)}</div></div></section>
 
@@ -41,7 +33,6 @@ const withBase = (path: string) => base === '/' ? path : `${base}${path}`;
 
     <section id="process" class="py-20 sm:py-28"><div class="container-site grid gap-12 lg:grid-cols-[.8fr_1.2fr]"><div><p class="eyebrow">A clear development process</p><h2 class="font-display text-4xl font-bold tracking-tight sm:text-5xl">Less guesswork. More momentum.</h2><p class="mt-5 max-w-sm leading-7 text-ink/65">A thoughtful product needs a clear handoff at every milestone. We keep the conversation focused on the details that move your project forward.</p></div><ol class="grid gap-0">{['Share your concept and target market', 'Align on product scope and custom features', 'Develop sample direction and refine details', 'Prepare for production and launch'].map((step, index) => <li class="flex gap-5 border-t border-ink/15 py-6"><span class="font-display text-2xl font-bold text-coral">0{index + 1}</span><span class="pt-1 font-display text-xl font-bold">{step}</span></li>)}</ol></div></section>
 
-    <section class="bg-white py-20 sm:py-28"><div class="container-site"><div><p class="eyebrow">Our products</p><h2 class="font-display text-4xl font-bold tracking-tight sm:text-5xl">Explore the complete collection.</h2></div><div class="mt-12 grid gap-6 md:grid-cols-2">{products.filter((product) => product.data.image).map((product) => <article class="group overflow-hidden rounded-3xl border border-ink/10 bg-white"><img src={withBase(product.data.image!)} alt={product.data.title} class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]" /><div class="p-7"><p class="text-xs font-bold uppercase tracking-[.14em] text-coral">{product.data.category}</p><h3 class="mt-2 font-display text-2xl font-bold">{product.data.title}</h3><p class="mt-3 text-sm leading-6 text-ink/65">{product.data.excerpt}</p><div class="mt-5 flex gap-4"><a class="text-sm font-bold text-moss hover:text-coral" href={`${basePath}products/${product.id}`}>View product →</a>{product.data.video && <a class="text-sm font-bold text-ink/55 hover:text-coral" href={product.data.video}>Watch video</a>}</div></div></article>)}</div></div></section>
 
     <section id="faq" class="py-20 sm:py-28"><div class="container-site grid gap-12 lg:grid-cols-[.75fr_1.25fr]"><div><p class="eyebrow">FAQ</p><h2 class="font-display text-4xl font-bold tracking-tight sm:text-5xl">Questions, answered.</h2></div><div>{faqs.map((faq) => <details class="border-t border-ink/15 py-5"><summary class="cursor-pointer list-none font-display text-lg font-bold marker:hidden">{faq.question}<span class="float-right text-coral">+</span></summary><p class="mt-3 max-w-2xl text-sm leading-6 text-ink/65">{faq.answer}</p></details>)}</div></div></section>
 

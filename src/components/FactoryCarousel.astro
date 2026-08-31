@@ -1,0 +1,28 @@
+---
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => base === '/' ? path : `${base}${path}`;
+const images = ['IMG_2200.jpg', 'IMG_2201.jpg', 'IMG_2202.jpg', 'IMG_2203.jpg', 'IMG_2204.jpg', 'IMG_2205.jpg', 'IMG_2206.jpg'];
+---
+<section class="relative min-h-[680px] overflow-hidden bg-ink" data-factory-carousel aria-label="Factory photo gallery">
+  {images.map((image, index) => <img data-factory-slide class:list={['absolute inset-0 h-full w-full object-cover transition-opacity duration-700', index === 0 ? 'opacity-100' : 'opacity-0']} src={withBase(`/images/company/${image}`)} alt={`Plushmind factory view ${index + 1}`} loading={index === 0 ? 'eager' : 'lazy'} />)}
+  <div class="absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/45 to-transparent"></div>
+  <div class="container-site relative flex min-h-[680px] items-end py-20 sm:py-24"><div class="max-w-2xl text-white"><p class="eyebrow !text-[#ffae8e]">AI plush toy OEM & ODM</p><h1 class="font-display text-5xl font-bold leading-[.98] tracking-tight sm:text-6xl lg:text-7xl">Where soft characters become <span class="text-[#d8e8c8]">smart companions.</span></h1><p class="mt-7 max-w-xl text-base leading-7 text-white/75 sm:text-lg">Explore our factory and discover custom AI plush toy development for global brands.</p><div class="mt-9 flex flex-wrap gap-3"><a class="button-primary !bg-coral hover:!bg-white hover:!text-ink" href="#contact">Start a project →</a><a class="button-secondary !border-white/35 !text-white hover:!bg-white hover:!text-ink" href="#products">Explore products</a></div></div></div>
+  <div class="absolute bottom-8 right-5 flex gap-2 sm:right-8">{images.map((_, index) => <button class:list={['h-2.5 w-2.5 rounded-full border border-white/70 transition', index === 0 ? 'bg-white' : 'bg-transparent']} data-factory-dot={index} aria-label={`Show factory photo ${index + 1}`}></button>)}</div>
+</section>
+<script>
+  const carousel = document.querySelector<HTMLElement>('[data-factory-carousel]');
+  if (carousel) {
+    const slides = [...carousel.querySelectorAll<HTMLElement>('[data-factory-slide]')];
+    const dots = [...carousel.querySelectorAll<HTMLButtonElement>('[data-factory-dot]')];
+    let active = 0;
+    const show = (index: number) => {
+      active = index;
+      slides.forEach((slide, slideIndex) => slide.classList.toggle('opacity-100', slideIndex === active));
+      slides.forEach((slide, slideIndex) => slide.classList.toggle('opacity-0', slideIndex !== active));
+      dots.forEach((dot, dotIndex) => dot.classList.toggle('bg-white', dotIndex === active));
+      dots.forEach((dot, dotIndex) => dot.classList.toggle('bg-transparent', dotIndex !== active));
+    };
+    dots.forEach((dot, index) => dot.addEventListener('click', () => show(index)));
+    window.setInterval(() => show((active + 1) % slides.length), 5000);
+  }
+</script>
