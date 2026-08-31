@@ -16,7 +16,7 @@ Build the production site with `npm run build`.
 - Add or update product directions in `src/content/products/*.md`.
 - Update process cards in `src/data/capabilities.json`.
 - Update FAQ content in `src/data/faq.yaml`.
-- Replace the product-image placeholders in `src/pages/index.astro` when images/videos are available.
+- Add product images to `public/images/products/`, then replace the product-image placeholders in `src/pages/index.astro`.
 
 ## Deployment
 
