@@ -2,12 +2,12 @@
 const home = import.meta.env.BASE_URL;
 const logo = home === '/' ? '/images/logo.jpg' : `${home}/images/logo.jpg`;
 ---
-<header class="absolute inset-x-0 top-0 z-20">
+<header class="absolute inset-x-0 top-0 z-20 border-b border-white/15 bg-ink/80 text-white backdrop-blur-md">
   <div class="container-site flex h-24 items-center justify-between">
-    <a href={home} class="flex items-center gap-3" aria-label="Pluzy AI Toy Factory home"><img src={logo} alt="Pluzy AI toy factory" width="640" height="640" class="h-12 w-12 rounded-full object-cover" /><span class="font-display text-xl font-bold tracking-tight text-ink">Pluzy</span></a>
-    <nav class="hidden items-center gap-7 text-sm font-semibold md:flex" aria-label="Main navigation">
-      <a href={`${home}#products`} class="hover:text-coral">AI Toys</a><a href={`${home}#solutions`} class="hover:text-coral">Factory Services</a><a href={`${home}#process`} class="hover:text-coral">How it works</a><a href={`${home}#oem-odm`} class="hover:text-coral">OEM / ODM</a><a href={`${home}#contact`} class="hover:text-coral">Contact</a>
+    <a href={home} class="flex items-center gap-3.5" aria-label="Pluzy AI Toy Factory home"><img src={logo} alt="Pluzy AI toy factory" width="640" height="640" class="h-14 w-14 rounded-2xl object-cover ring-2 ring-coral shadow-lg shadow-coral/20" /><span class="font-display text-2xl font-bold uppercase tracking-[0.12em] text-white sm:text-3xl">Plu<span class="text-coral">zy</span></span></a>
+    <nav class="hidden items-center gap-7 text-sm font-bold tracking-wide text-white/90 md:flex" aria-label="Main navigation">
+      <a href={`${home}#products`} class="transition hover:text-coral">AI Toys</a><a href={`${home}#solutions`} class="transition hover:text-coral">Factory Services</a><a href={`${home}#process`} class="transition hover:text-coral">How it works</a><a href={`${home}#oem-odm`} class="transition hover:text-coral">OEM / ODM</a><a href={`${home}#contact`} class="transition hover:text-coral">Contact</a>
     </nav>
-    <a href={`${home}#contact`} class="button-primary !px-5 !py-2.5">Start a project</a>
+    <a href={`${home}#contact`} class="inline-flex items-center justify-center rounded-full bg-coral px-5 py-3 text-sm font-bold text-ink shadow-lg shadow-coral/20 transition hover:-translate-y-0.5 hover:bg-white">Start a project</a>
   </div>
 </header>
