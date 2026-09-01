@@ -1,3 +1,3 @@
 export function GET() {
-  return new Response('User-agent: *\nAllow: /\n', { headers: { 'Content-Type': 'text/plain' } });
+  return new Response(`User-agent: *\nAllow: /\n\nSitemap: ${new URL('sitemap-index.xml', import.meta.env.SITE).href}\n`, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
 }

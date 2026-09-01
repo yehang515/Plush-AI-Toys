@@ -1,11 +1,12 @@
 ---
 const home = import.meta.env.BASE_URL;
+const logo = home === '/' ? '/images/logo.jpg' : `${home}/images/logo.jpg`;
 ---
 <header class="absolute inset-x-0 top-0 z-20">
   <div class="container-site flex h-24 items-center justify-between">
-    <a href={home} class="font-display text-xl font-bold tracking-tight text-ink">plush<span class="text-coral">mind</span></a>
+    <a href={home} class="flex items-center gap-3" aria-label="Pluzy AI Toy Factory home"><img src={logo} alt="Pluzy AI toy factory" width="640" height="640" class="h-12 w-12 rounded-full object-cover" /><span class="font-display text-xl font-bold tracking-tight text-ink">Pluzy</span></a>
     <nav class="hidden items-center gap-7 text-sm font-semibold md:flex" aria-label="Main navigation">
-      <a href={`${home}#solutions`} class="hover:text-coral">Solutions</a><a href={`${home}#process`} class="hover:text-coral">How it works</a><a href={`${home}#oem-odm`} class="hover:text-coral">OEM / ODM</a><a href={`${home}#contact`} class="hover:text-coral">Contact</a>
+      <a href={`${home}#products`} class="hover:text-coral">AI Toys</a><a href={`${home}#solutions`} class="hover:text-coral">Factory Services</a><a href={`${home}#process`} class="hover:text-coral">How it works</a><a href={`${home}#oem-odm`} class="hover:text-coral">OEM / ODM</a><a href={`${home}#contact`} class="hover:text-coral">Contact</a>
     </nav>
     <a href={`${home}#contact`} class="button-primary !px-5 !py-2.5">Start a project</a>
   </div>

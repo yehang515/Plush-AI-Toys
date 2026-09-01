@@ -1,6 +1,6 @@
-# Plushmind — AI Plush Toy Manufacturer
+# Pluzy — AI Toy Factory
 
-English B2B marketing site for custom AI plush toy OEM, ODM and private-label projects.
+English B2B marketing site for Pluzy, a China AI toy factory for custom AI toys, AI plush toy OEM, ODM and private-label projects.
 
 ## Local development
 
@@ -20,4 +20,4 @@ Build the production site with `npm run build`.
 
 ## Deployment
 
-Pushing `main` builds and publishes the static site using GitHub Actions. The default configuration works at the repository project URL (`/Plush-AI-Toys/`). Before a custom-domain launch, set Actions variables `SITE_URL` to the final HTTPS domain and `BASE_PATH` to `/`. See [DOMAIN_SETUP.md](DOMAIN_SETUP.md) for details.
+Pushing `main` builds and publishes the static site using GitHub Actions at `https://www.pluzytoy.com`. See [DOMAIN_SETUP.md](DOMAIN_SETUP.md) for details.

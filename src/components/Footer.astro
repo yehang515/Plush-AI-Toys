@@ -1,11 +1,12 @@
 ---
 const home = import.meta.env.BASE_URL;
+const logo = home === '/' ? '/images/logo.jpg' : `${home}/images/logo.jpg`;
 ---
 <footer class="bg-ink py-12 text-white">
   <div class="container-site grid gap-10 md:grid-cols-[1.3fr_1fr_1fr]">
-    <div><a href={home} class="font-display text-xl font-bold">plush<span class="text-coral">mind</span></a><p class="mt-4 max-w-sm text-sm leading-6 text-white/65">AI plush toy development and manufacturing for global brands.</p></div>
-    <div><p class="text-sm font-bold">Explore</p><div class="mt-4 grid gap-2 text-sm text-white/65"><a href={`${home}#solutions`}>Solutions</a><a href={`${home}#process`}>Development process</a><a href={`${home}#faq`}>FAQ</a></div></div>
+    <div><a href={home} class="flex items-center gap-3" aria-label="Pluzy AI Toy Factory home"><img src={logo} alt="Pluzy AI toy factory" width="640" height="640" class="h-11 w-11 rounded-full object-cover" /><span class="font-display text-xl font-bold">Pluzy</span></a><p class="mt-4 max-w-sm text-sm leading-6 text-white/65">China AI toy factory for custom AI plush toys, talking toys, smart companions and OEM / ODM manufacturing.</p></div>
+    <div><p class="text-sm font-bold">Explore</p><div class="mt-4 grid gap-2 text-sm text-white/65"><a href={`${home}#products`}>AI toys</a><a href={`${home}#solutions`}>Factory services</a><a href={`${home}#process`}>Development process</a><a href={`${home}#faq`}>FAQ</a></div></div>
     <div><p class="text-sm font-bold">Contact</p><div class="mt-4 grid gap-2 text-sm text-white/65"><a href="mailto:kyle.zhanghang@gmail.com">kyle.zhanghang@gmail.com</a><a href="https://wa.me/8617625983675">WhatsApp +86 176 2598 3675</a></div></div>
   </div>
-  <div class="container-site mt-12 border-t border-white/10 pt-6 text-xs text-white/45">© {new Date().getFullYear()} Plushmind. Built for global brands.</div>
+  <div class="container-site mt-12 border-t border-white/10 pt-6 text-xs text-white/45">© {new Date().getFullYear()} Pluzy AI Toy Factory. Built for global brands.</div>
 </footer>

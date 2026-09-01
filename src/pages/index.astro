@@ -11,14 +11,14 @@ import { parse } from 'yaml';
 
 const products = (await getCollection('products')).sort((a, b) => a.data.order - b.data.order);
 const faqs = parse(faqSource) as { question: string; answer: string }[];
-const description = 'AI plush toy manufacturer for OEM, ODM, private label and custom smart plush projects.';
+const description = 'Pluzy is an AI toy factory in China for custom AI toys, AI plush toys, talking toys and OEM / ODM smart toy manufacturing.';
 const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map(({ question, answer }) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })) };
-const organizationSchema = { '@context': 'https://schema.org', '@type': 'Organization', name: 'Plushmind', url: Astro.site, email: 'kyle.zhanghang@gmail.com', contactPoint: { '@type': 'ContactPoint', contactType: 'sales', telephone: '+8617625983675', availableLanguage: ['English'] } };
+const organizationSchema = { '@context': 'https://schema.org', '@type': ['Organization', 'Manufacturer'], name: 'Pluzy', alternateName: 'Pluzy AI Toy Factory', url: Astro.site, logo: new URL('/images/logo.jpg', Astro.site).href, description, email: 'kyle.zhanghang@gmail.com', knowsAbout: ['AI toys', 'AI toy manufacturing', 'AI plush toys', 'smart toys', 'talking toys', 'OEM manufacturing', 'ODM manufacturing'], contactPoint: { '@type': 'ContactPoint', contactType: 'sales', telephone: '+8617625983675', availableLanguage: ['English'] } };
 const base = import.meta.env.BASE_URL;
 const basePath = base === '/' ? '/' : `${base}/`;
 const withBase = (path: string) => base === '/' ? path : `${base}${path}`;
 ---
-<BaseLayout title="AI Plush Toy Manufacturer | OEM, ODM & Private Label" description={description}>
+<BaseLayout title="AI Toy Factory & Manufacturer in China | OEM, ODM & Custom AI Toys" description={description}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationSchema)}></script>
   <Header />
